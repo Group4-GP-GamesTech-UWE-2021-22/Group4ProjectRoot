@@ -421,31 +421,34 @@ public class MyCharacterController : MonoBehaviour
         }
 
         // Jump Function 
-        if (grounded && !sliding)
+        if (groundAngle < maxGroundAngle)
         {
-            if (follower.marioAutoRunStyle)
+            if (grounded)
             {
-                if (follower.currentPath != null)
+                if (follower.marioAutoRunStyle)
+                {
+                    if (follower.currentPath != null)
+                    {
+                        follower.previousPath = follower.currentPath;
+                        follower.currentPath = null;
+                        jumpedOnSpline = true;
+                    }
+                }
+
+                else if (follower.currentPath != null)
                 {
                     follower.previousPath = follower.currentPath;
                     follower.currentPath = null;
                     jumpedOnSpline = true;
+                    follower.onSpline = false;
                 }
-            }
 
-            else if (follower.currentPath != null)
-            {
-                follower.previousPath = follower.currentPath;
-                follower.currentPath = null;
-                jumpedOnSpline = true;
-                follower.onSpline = false;
+                forceDirection += Vector3.up * jumpForce;
+                hasJumped = true;
+                landedJump = false;
+                jumpCooldown = true;
+                StartCoroutine(jumpCooldownTimer(jumpCooldownTime));
             }
-
-            forceDirection += Vector3.up * jumpForce;
-            hasJumped = true;
-            landedJump = false;
-            jumpCooldown = true;
-            StartCoroutine(jumpCooldownTimer(jumpCooldownTime));
         }
         else if (hasJumped && canDoubleJump)
         {
@@ -491,7 +494,6 @@ public class MyCharacterController : MonoBehaviour
 
         if (Physics.Raycast(groundedRay, out groundHitInfo, 1f))
         {
-
             floorCollider = groundHitInfo.collider;
             Debug.Log("IS GROUNDED!");
             grounded = true;
