@@ -249,7 +249,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1695
+  m_VersionIndex: 1698
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -384,6 +384,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5b9800d8a088b3841b85b2a2b5e6da5b, type: 2}
   - {fileID: 2100000, guid: fda55acaf1d7bb64fa626cea010882d7, type: 2}
   state: 0
+  correct: 0
+  isPuzzle: 0
+  letterPosition: 0
+  resultCube: {fileID: 0}
 --- !u!65 &6578453779867688283
 BoxCollider:
   m_ObjectHideFlags: 0
