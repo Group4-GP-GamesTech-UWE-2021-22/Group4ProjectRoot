@@ -44,6 +44,7 @@ public class Player_stats : MonoBehaviour
 
 
 
+
         dataToParse.health_remaining = health;
 
         health_slider.value = health / max_health;
