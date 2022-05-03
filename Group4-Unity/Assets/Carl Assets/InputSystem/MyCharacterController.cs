@@ -169,7 +169,7 @@ public class MyCharacterController : MonoBehaviour
         playerInputActions.ThirdPersonPlayer.Attack.started += DoAttack;
         moveAction = playerInputActions.ThirdPersonPlayer.Movement;
         playerInputActions.ThirdPersonPlayer.Trigger.performed += DoTrigger;
-       // playerInputActions.ThirdPersonPlayer.Trigger.canceled += DoTrigger;
+        // playerInputActions.ThirdPersonPlayer.Trigger.canceled += DoTrigger;
         playerInputActions.ThirdPersonPlayer.Stance.started += ChangeStance;
         playerInputActions.ThirdPersonPlayer.Stance.performed += ChangeStance;
         playerInputActions.ThirdPersonPlayer.Stance.canceled += ChangeStance;
@@ -181,7 +181,7 @@ public class MyCharacterController : MonoBehaviour
     {
         playerInputActions.ThirdPersonPlayer.Jump.started -= DoJump;
         playerInputActions.ThirdPersonPlayer.Attack.started -= DoAttack;
-       // playerInputActions.ThirdPersonPlayer.Trigger.performed -= DoTrigger;
+        // playerInputActions.ThirdPersonPlayer.Trigger.performed -= DoTrigger;
         playerInputActions.ThirdPersonPlayer.Trigger.canceled -= DoTrigger;
         playerInputActions.ThirdPersonPlayer.Stance.started -= ChangeStance;
         playerInputActions.ThirdPersonPlayer.Stance.performed -= ChangeStance;
@@ -246,10 +246,10 @@ public class MyCharacterController : MonoBehaviour
 
             SplineMove();
 
-          //  if (!follower.marioAutoRunStyle)
-           // {
-                //SplineMove();
-           // }
+            //  if (!follower.marioAutoRunStyle)
+            // {
+            //SplineMove();
+            // }
         }
         else
         {
@@ -323,14 +323,14 @@ public class MyCharacterController : MonoBehaviour
     #region - Movement -
     private void SplineMove()
     {
-     
+
 
         xmove = moveAction.ReadValue<Vector2>().x;
 
-      
+
     }
 
-    public void SplineChangeDir(Vector3 nextpos) 
+    public void SplineChangeDir(Vector3 nextpos)
     {
 
         transform.LookAt(nextpos);
@@ -483,22 +483,20 @@ public class MyCharacterController : MonoBehaviour
     {
         triggerHeld = obj.ReadValueAsButton();
 
-        if (triggerHeld) 
+        if (triggerHeld)
         {
 
             action = true;
         }
-        else 
+        else
         {
 
             action = false;
         }
-        
 
-        Debug.Log("Trigger Pressed" );
+
+        Debug.Log("Trigger Pressed");
     }
-
-
 
     #endregion
 

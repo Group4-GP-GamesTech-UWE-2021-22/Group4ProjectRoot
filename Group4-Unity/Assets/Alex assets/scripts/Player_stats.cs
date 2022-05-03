@@ -35,6 +35,7 @@ public class Player_stats : MonoBehaviour
             //move_contr.player_state = Movement_controller.status_state.DEAD;
             //move_contr.anim.SetTrigger("dead");
             dead = true;
+            gameObject.GetComponent<Animator>().SetTrigger("death");
         }
         else if (health > 100)
         {
@@ -83,6 +84,6 @@ public class Player_stats : MonoBehaviour
 
     private void OnGUI()
     {
-       // GUI.Box(new Rect(20, Screen.height - 50, 125, 30), "Coins collected: " + coins_nums);
+        // GUI.Box(new Rect(20, Screen.height - 50, 125, 30), "Coins collected: " + coins_nums);
     }
 }
