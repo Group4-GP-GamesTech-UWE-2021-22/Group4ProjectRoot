@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6220732672430178415}
   - component: {fileID: 6220732672430178414}
   - component: {fileID: 6220732672430178413}
-  - component: {fileID: -250142343858667259}
   m_Layer: 0
   m_Name: SteelGreyCube1.5x1.5
   m_TagString: Untagged
@@ -343,22 +342,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &-250142343858667259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6220732672430178412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cc05b623293e74c921d2f642f0c4cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials: []
-  state: 0
-  correct: 0
-  isPuzzle: 0
-  letterPosition: 0
-  targetPosition: 0
-  resultCube: {fileID: 0}
