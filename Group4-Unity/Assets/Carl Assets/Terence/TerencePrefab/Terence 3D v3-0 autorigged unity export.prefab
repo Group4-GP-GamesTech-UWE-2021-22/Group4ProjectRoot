@@ -1692,6 +1692,11 @@ MonoBehaviour:
   hasJumped: 0
   hasDoubleJumped: 0
   landedJump: 0
+  grounded: 0
+  groundAngle: 0
+  maxGroundAngle: 130
+  characterForward: {x: 0, y: 0, z: 0}
+  sliding: 0
   triggerHeld: 0
   splineSpeed: 10
   onSpline: 0
@@ -2009,7 +2014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5673016925078220976}
   m_Layer: 0
-  m_Name: FollowTarget
+  m_Name: LookAtTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
