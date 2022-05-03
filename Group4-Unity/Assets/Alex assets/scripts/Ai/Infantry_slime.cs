@@ -12,10 +12,15 @@ public class Infantry_slime : enemy_main
     private Renderer cubeRenderer;
     private Rigidbody m_Rigidbody;
 
+
+    private float rate = 1f;
+    private float time_passed = 0f;
+
+
     private void Awake()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
-       // stats = FindObjectOfType<player_stats>();
+       stats = FindObjectOfType<Player_stats>();
         cubeRenderer = GetComponent<Renderer>();
         m_Rigidbody = GetComponent<Rigidbody>();
 
@@ -26,7 +31,7 @@ public class Infantry_slime : enemy_main
     {
         cubeRenderer.material.SetColor("_Color", Color.red);
 
-        //stats.take_damage(5f * split_left);
+        stats.take_damage(2f * split_left);
 
         //player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         //player.GetComponent<Rigidbody>().AddForce(this.transform.forward * (200 * split_left / 5));
@@ -51,11 +56,8 @@ public class Infantry_slime : enemy_main
 
        // Debug.Log(Vector3.Distance(this.transform.position, player.transform.position));
 
-        if (Vector3.Distance(this.transform.position, player.transform.position) < 3)
-        {
-            action_state = state.ATTACKING;
-        }
-        else if (Vector3.Distance(this.transform.position, player.transform.position) >= 20) 
+        
+     if (Vector3.Distance(this.transform.position, player.transform.position) >= 20) 
         {
             action_state = state.WONDERING;
         }
@@ -79,12 +81,18 @@ public class Infantry_slime : enemy_main
 
     }
 
+    public override void const_call()
+    {
 
+        time_passed += Time.deltaTime;
+    }
 
 
     public void Set_stats(float splits)
     {
         split_left = splits;
+        health = 100 / splits;
+        max_health = 100 / splits;
         this.transform.localScale = new Vector3(splits / 5, splits / 5, splits / 5);
     }
 
@@ -101,7 +109,7 @@ public class Infantry_slime : enemy_main
                 var new_slime = Instantiate(slime, new Vector3(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y + Random.Range(0, 5), this.transform.position.z + Random.Range(-2, 2)), Quaternion.Euler(0, Random.Range(0, 360), 0));
 
                 new_slime.GetComponent<Infantry_slime>().Set_stats(split_left - 1);
-                Debug.Log("spawned");
+                
                // m_Rigidbody.AddForce(transform.up * 250);
                 //m_Rigidbody.AddForce(transform.forward * 200);
             }
@@ -114,7 +122,7 @@ public class Infantry_slime : enemy_main
                 var new_slime = Instantiate(slime, new Vector3(this.transform.position.x + Random.Range(-2, 2), this.transform.position.y + Random.Range(0, 5), this.transform.position.z + Random.Range(-2, 2)), Quaternion.Euler(0, Random.Range(0, 360), 0));
 
                 new_slime.GetComponent<Infantry_slime>().Set_stats(split_left - 1);
-                Debug.Log("spawned");
+                
                // m_Rigidbody.AddForce(transform.up * 250);
                 //m_Rigidbody.AddForce(transform.forward * 200);
             }
@@ -127,23 +135,32 @@ public class Infantry_slime : enemy_main
 
         Destroy(gameObject);
     }
+
+
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (time_passed > rate) 
+            {
+
+                stats.take_damage(2f * split_left);
+            }
+
+
+
+
+
+        }
+    }
+
+
+
+
+
 }
 
 
 
-
-/*the next one no rigifboyd
- * 
- *  when seeking pricks up
- *  
- *  when attacking spawns misslise
- *  
- *  shouldnt be to hard
- *  
- *  
- *  
- *  fix the text on the.. text
- *  
- *  we still need to attack but that should be fine 
- * 
- */

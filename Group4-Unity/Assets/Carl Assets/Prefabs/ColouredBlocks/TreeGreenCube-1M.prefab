@@ -11,6 +11,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed5c951899f4d9041838ca48ef717091, type: 2}
+    - target: {fileID: 2620716865923745802, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620716865923745802, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620716865923745802, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
+      propertyPath: m_SelectedFaces.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620716865923745802, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2907827998619074640, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -58,6 +74,14 @@ PrefabInstance:
     - target: {fileID: 3937252804262321837, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
       propertyPath: m_Name
       value: TreeGreenCube-1M
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799926491912506883, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818357297458430448, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99eb91bf4e403d449fc89c07e0e0257, type: 3}

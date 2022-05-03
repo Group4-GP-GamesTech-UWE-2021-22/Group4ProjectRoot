@@ -100,6 +100,7 @@ public class MyCharacterController : MonoBehaviour
 
     [Header("Input Action Variables")]
     [SerializeField] public bool triggerHeld = false;
+    [SerializeField] public float xmove = 0;
 
     [Header("Spline Variables")]
     [SerializeField] public float splineSpeed = 10;
@@ -107,6 +108,7 @@ public class MyCharacterController : MonoBehaviour
     [SerializeField] public bool jumpedOnSpline = false;
     private SplineFollower follower;
     public float pathDistanceTravelled = 0;
+    public bool action = false;
 
 
     #region - Awake/Start -
@@ -167,7 +169,7 @@ public class MyCharacterController : MonoBehaviour
         playerInputActions.ThirdPersonPlayer.Attack.started += DoAttack;
         moveAction = playerInputActions.ThirdPersonPlayer.Movement;
         playerInputActions.ThirdPersonPlayer.Trigger.performed += DoTrigger;
-        playerInputActions.ThirdPersonPlayer.Trigger.canceled += DoTrigger;
+       // playerInputActions.ThirdPersonPlayer.Trigger.canceled += DoTrigger;
         playerInputActions.ThirdPersonPlayer.Stance.started += ChangeStance;
         playerInputActions.ThirdPersonPlayer.Stance.performed += ChangeStance;
         playerInputActions.ThirdPersonPlayer.Stance.canceled += ChangeStance;
@@ -179,7 +181,7 @@ public class MyCharacterController : MonoBehaviour
     {
         playerInputActions.ThirdPersonPlayer.Jump.started -= DoJump;
         playerInputActions.ThirdPersonPlayer.Attack.started -= DoAttack;
-        playerInputActions.ThirdPersonPlayer.Trigger.performed -= DoTrigger;
+       // playerInputActions.ThirdPersonPlayer.Trigger.performed -= DoTrigger;
         playerInputActions.ThirdPersonPlayer.Trigger.canceled -= DoTrigger;
         playerInputActions.ThirdPersonPlayer.Stance.started -= ChangeStance;
         playerInputActions.ThirdPersonPlayer.Stance.performed -= ChangeStance;
@@ -199,7 +201,7 @@ public class MyCharacterController : MonoBehaviour
         {
             if (other.CompareTag("Enemy"))
             {
-                other.GetComponent<EnemyAINavMesh3D>().TakeDamage(45);
+                other.GetComponent<enemy_main>().damage(45);
             }
         }
     }
@@ -228,6 +230,9 @@ public class MyCharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
+
         moveAmount = Mathf.Clamp01(Mathf.Abs(moveAction.ReadValue<Vector2>().x) + Mathf.Abs(moveAction.ReadValue<Vector2>().y));
         IsGrounded();
         CalculateCharacterForward();
@@ -237,13 +242,21 @@ public class MyCharacterController : MonoBehaviour
 
         if (onSpline)
         {
-            if (!follower.marioAutoRunStyle)
-            {
-                SplineMove();
-            }
+
+
+            SplineMove();
+
+          //  if (!follower.marioAutoRunStyle)
+           // {
+                //SplineMove();
+           // }
         }
         else
         {
+
+
+
+
             if (groundAngle < maxGroundAngle)
             {
                 Move();
@@ -281,11 +294,11 @@ public class MyCharacterController : MonoBehaviour
 
         if (follower.onSpline)
         {
-            onSpline = true;
+            //onSpline = true;
         }
         else
         {
-            onSpline = false;
+            //onSpline = false;
         }
     }
 
@@ -310,25 +323,20 @@ public class MyCharacterController : MonoBehaviour
     #region - Movement -
     private void SplineMove()
     {
-        /*        float distanceTravelledInJump = 0;
-                if (hasJumped)
-                {
+     
 
-                    distanceTravelledInJump += moveAction.ReadValue<Vector2>().x / 10;
-                    if (landedJump)
-                    {
-                        follower.distanceTravelled += distanceTravelledInJump;
-                    }
-                }*/
+        xmove = moveAction.ReadValue<Vector2>().x;
 
+      
+    }
 
+    public void SplineChangeDir(Vector3 nextpos) 
+    {
 
-        if (moveAction.ReadValue<Vector2>().x != 0)
-        {
-            follower.distanceTravelled += moveAction.ReadValue<Vector2>().x * splineSpeed * Time.fixedDeltaTime;
-        }
+        transform.LookAt(nextpos);
 
     }
+
 
     private void Move()
     {
@@ -474,7 +482,20 @@ public class MyCharacterController : MonoBehaviour
     private void DoTrigger(InputAction.CallbackContext obj)
     {
         triggerHeld = obj.ReadValueAsButton();
-        Debug.Log("Trigger Pressed");
+
+        if (triggerHeld) 
+        {
+
+            action = true;
+        }
+        else 
+        {
+
+            action = false;
+        }
+        
+
+        Debug.Log("Trigger Pressed" );
     }
 
 
@@ -495,13 +516,13 @@ public class MyCharacterController : MonoBehaviour
         if (Physics.Raycast(groundedRay, out groundHitInfo, 1f))
         {
             floorCollider = groundHitInfo.collider;
-            Debug.Log("IS GROUNDED!");
+            //Debug.Log("IS GROUNDED!");
             grounded = true;
             return true;
         }
         else
         {
-            Debug.Log("NOT GROUNDED!");
+            //Debug.Log("NOT GROUNDED!");
             grounded = false;
             return false;
         }

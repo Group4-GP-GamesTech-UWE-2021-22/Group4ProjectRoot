@@ -19,7 +19,7 @@ public class Missile : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 30);
+        Destroy(gameObject, 10);
         time_spawn = Time.time + timer;
     }
 
@@ -31,10 +31,10 @@ public class Missile : MonoBehaviour
         if (Time.time > time_spawn) 
         {
 
-             var adjusted_player_pos = new Vector3(player.transform.position.x, player.transform.position.y + 1.23f, player.transform.position.z);
+             var adjusted_player_pos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
             var x = Quaternion.LookRotation(adjusted_player_pos - transform.position);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, x, 40 * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, x, 59 * Time.deltaTime);
 
 
             this.transform.Translate(Vector3.forward * Time.deltaTime * 5);
@@ -57,7 +57,7 @@ public class Missile : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            //collision.transform.GetComponent<player_stats>().take_damage(5);
+            collision.transform.GetComponent<Player_stats>().take_damage(5);
             Debug.Log("caklk ndaihdaiod");
             
         }

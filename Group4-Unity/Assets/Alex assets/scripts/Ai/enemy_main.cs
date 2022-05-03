@@ -20,7 +20,7 @@ public class enemy_main : MonoBehaviour
     }
     public state action_state;
 
-   // public player_stats stats;
+    public Player_stats stats;
     public GameObject player;
 
     public Image Fill;  // assign in the editor the "Fill"
@@ -40,7 +40,7 @@ public class enemy_main : MonoBehaviour
     private void Update()
     {
 
-        health -= Time.deltaTime;
+        //health -= Time.deltaTime;
 
 
         if (health > max_health)
@@ -53,7 +53,7 @@ public class enemy_main : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        Debug.Log(action_state);
+        //Debug.Log(action_state);
 
 
         if (Time.time > action_rate + last_damage)
@@ -77,6 +77,8 @@ public class enemy_main : MonoBehaviour
             }
         }
 
+        const_call();
+
         draw_text();
 
     }
@@ -94,6 +96,9 @@ public class enemy_main : MonoBehaviour
     { }
 
     virtual public void on_death()
+    { }
+
+    virtual public void const_call() 
     { }
     // Update is called once per frame
 
@@ -115,7 +120,7 @@ public class enemy_main : MonoBehaviour
 
 
             text.gameObject.transform.GetChild(0).transform.GetComponent<Slider>().value = percentage;
-            Debug.Log(percentage);
+           // Debug.Log(percentage);
 
             if (percentage >= 0.79f) 
             {
@@ -145,9 +150,9 @@ public class enemy_main : MonoBehaviour
     }
 
 
-    public void damage()
+    public void damage(int dam)
     {
-     
 
+        health -= dam;
     }
 }

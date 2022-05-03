@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3795572282341704881}
   m_Layer: 0
   m_Name: artillery
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   action_rate: 0.1
   last_damage: 0
   action_state: 0
+  stats: {fileID: 0}
   player: {fileID: 0}
   Fill: {fileID: 3795572283600262335}
   text: {fileID: 3795572283128542532}

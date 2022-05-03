@@ -22,14 +22,14 @@ public class slime_enemy : MonoBehaviour
     private int damage = 5;
     private bool damaged;
 
-   // private player_stats stats;
+    private Player_stats stats;
     private GameObject player;
 
     public GameObject slime;
 
     private void Awake()
     {
-      //  stats = FindObjectOfType<player_stats>();
+      stats = FindObjectOfType<Player_stats>();
         cubeRenderer = GetComponent<Renderer>();
         m_Rigidbody = GetComponent<Rigidbody>();
 
