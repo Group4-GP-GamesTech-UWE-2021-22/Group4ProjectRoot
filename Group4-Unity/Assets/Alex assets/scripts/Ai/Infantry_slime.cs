@@ -115,7 +115,7 @@ public class Infantry_slime : enemy_main
             }
 
         }
-        else if (split_left == 3 || split_left == 2)
+        else if (split_left == 3 )
         {
             for (int i = 0; i < 2; i++)
             {
@@ -127,7 +127,7 @@ public class Infantry_slime : enemy_main
                 //m_Rigidbody.AddForce(transform.forward * 200);
             }
         }
-        else if (split_left == 1)
+        else if (split_left == 1 || split_left == 2)
         {
             // just die
         }
