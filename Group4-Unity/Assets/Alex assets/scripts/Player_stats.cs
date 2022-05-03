@@ -29,7 +29,7 @@ public class Player_stats : MonoBehaviour
 
     void Update()
     {
-        if (health < 0 && !dead)
+        if (health <= 0 && !dead)
         {
             health = 0;
             //move_contr.player_state = Movement_controller.status_state.DEAD;

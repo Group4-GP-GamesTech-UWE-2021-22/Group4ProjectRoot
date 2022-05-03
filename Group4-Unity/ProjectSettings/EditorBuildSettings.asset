@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Map part 1.unity
     guid: fed117b69a9d61c43929d0d6398ca13d
   - enabled: 1
-    path: Assets/Scenes/Map part 2df.unity
-    guid: e3c2363555702494a946817e7231cab5
-  - enabled: 1
     path: Assets/Scenes/ToyGameScene.unity
     guid: 7d6f567ec7c478c4e9cd3e9d339d56c6
+  - enabled: 1
+    path: Assets/Scenes/Map part 2.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
