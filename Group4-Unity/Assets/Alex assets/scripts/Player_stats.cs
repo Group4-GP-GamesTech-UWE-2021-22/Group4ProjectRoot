@@ -34,8 +34,8 @@ public class Player_stats : MonoBehaviour
             health = 0;
             //move_contr.player_state = Movement_controller.status_state.DEAD;
             //move_contr.anim.SetTrigger("dead");
-            dead = true;
             gameObject.GetComponent<Animator>().SetTrigger("death");
+            dead = true;
         }
         else if (health > 100)
         {
